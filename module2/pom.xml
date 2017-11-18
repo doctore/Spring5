@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">	
+	<modelVersion>4.0.0</modelVersion>
+	<name>module2</name>
+	<groupId>com.module2</groupId>
+	<artifactId>module2</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0</version>
+
+	<properties>
+	    <failOnMissingWebXml>false</failOnMissingWebXml>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<apache-ignite.version>2.3.0</apache-ignite.version>
+		
+	    <java.version>1.8</java.version>
+		<javax-servlet.version>3.1.0</javax-servlet.version>
+		
+	    <junit.version>5.0.1</junit.version>
+	    <junit-platform-surefire.version>1.0.1</junit-platform-surefire.version>
+		
+	    <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>		
+	    <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>		
+	    <maven-war-plugin.version>2.6</maven-war-plugin.version>
+	
+	    <org.springframework.version>5.0.1.RELEASE</org.springframework.version>
+	    <org.springframework-kafka.version>2.0.0.RELEASE</org.springframework-kafka.version>
+		<springframework-cassandra.version>2.0.0.RELEASE</springframework-cassandra.version>
+	</properties>
+
+	<dependencies>
+	
+	    <!-- Spring -->
+	    <dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-context</artifactId>
+	        <version>${org.springframework.version}</version>
+	    </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+	    <dependency>
+        	<groupId>org.springframework.kafka</groupId>
+        	<artifactId>spring-kafka</artifactId>
+        	<version>${org.springframework-kafka.version}</version>
+    	</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-cassandra</artifactId>
+			<version>${springframework-cassandra.version}</version>
+		</dependency>
+
+		<!-- In memory database -->
+		<dependency>
+			<groupId>org.apache.ignite</groupId>
+			<artifactId>ignite-core</artifactId>
+			<version>${apache-ignite.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ignite</groupId>
+			<artifactId>ignite-spring</artifactId>
+			<version>${apache-ignite.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ignite</groupId>
+			<artifactId>ignite-spring-data</artifactId>
+			<version>${apache-ignite.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ignite</groupId>
+			<artifactId>ignite-indexing</artifactId>
+			<version>${apache-ignite.version}</version>
+		</dependency>
+
+		<!-- Test -->
+	    <dependency>
+    		<groupId>org.junit.jupiter</groupId>
+    		<artifactId>junit-jupiter-api</artifactId>
+    		<version>${junit.version}</version>
+    		<scope>test</scope>
+		</dependency>
+
+		<!-- Work with Jboss -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax-servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+    <build>
+        <finalName>${project.name}-${project.version}-${project.profile.deploy}</finalName>
+        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<fork>true</fork>
+					<compilerArgs>
+						<arg>-Xlint</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>	
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					<filters>
+						<filter>${project.basedir}/src/main/resources/deployment/deploy-${project.profile.deploy}.properties</filter>
+					</filters>
+				</configuration>
+			</plugin>
+			<plugin>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <version>${maven-surefire-plugin.version}</version>
+	            <dependencies>
+	                <dependency>
+	                    <groupId>org.junit.platform</groupId>
+	                    <artifactId>junit-platform-surefire-provider</artifactId>
+	                    <version>${junit-platform-surefire.version}</version>
+	                </dependency>
+	                <dependency>
+	                    <groupId>org.junit.jupiter</groupId>
+	                    <artifactId>junit-jupiter-engine</artifactId>
+	                    <version>${junit.version}</version>
+	                </dependency>
+	            </dependencies>
+        	</plugin>			
+        </plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<filters>
+			<filter>${project.basedir}/src/main/resources/deployment/deploy-${project.profile.deploy}.properties</filter>
+		</filters>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <project.profile.deploy>DEV</project.profile.deploy>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <project.profile.deploy>PROD</project.profile.deploy>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
