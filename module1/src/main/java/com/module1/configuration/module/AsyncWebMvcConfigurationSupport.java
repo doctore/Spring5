@@ -16,7 +16,8 @@ import com.module1.Constants;
  */
 @Configuration
 @ComponentScan (basePackages = {Constants.APPLICATION_PATH.CONTROLLER
-                               ,Constants.APPLICATION_PATH.SERVICE})
+                               ,Constants.APPLICATION_PATH.SERVICE
+                               ,Constants.APPLICATION_PATH.SCHEDULER})
 @EnableWebMvc
 public class AsyncWebMvcConfigurationSupport extends WebMvcConfigurationSupport {
 	

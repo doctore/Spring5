@@ -13,7 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan (basePackages = {Constants.APPLICATION_PATH.REPOSITORY})
+@ComponentScan (basePackages = {Constants.APPLICATION_PATH.REPOSITORY
+                               ,Constants.APPLICATION_PATH.SCHEDULER})
 @EnableIgniteRepositories
 public class IgniteConfig {
 

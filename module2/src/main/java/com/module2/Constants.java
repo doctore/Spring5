@@ -12,6 +12,7 @@ public class Constants {
 		public static final String ROOT = "com.module2";
 		public static final String CONTROLLER = ROOT + "." + "controller";
 		public static final String REPOSITORY = ROOT + "." + "repository.impl";
+		public static final String SCHEDULER  = ROOT + "." + "scheduler";
 	}
 
 	// Kafka constants
