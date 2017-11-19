@@ -16,9 +16,14 @@ public class Constants {
 
 		public static final String ROOT = "com.module1";
 		public static final String CONTROLLER = ROOT + "." + "controller";
+		public static final String REPOSITORY = ROOT + "." + "repository";
+		public static final String SERVICE = ROOT + "." + "service";
 	}
 
 	// Kafka constants
-	public static final String KAFKA_TOPIC = "learning";
+	public static final String KAFKA_TOPIC = "kafka_topic";
+
+	// Cassandra constants
+	public static final String CASSANDRA_KEYSPACE = "cassandra_db";
 
 }

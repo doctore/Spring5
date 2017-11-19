@@ -13,10 +13,31 @@ public class MeasurementInformationDto implements Serializable {
     public String aircraft;
     public String engine;
     public String parameter1Value;
-    public String parameter2Value;
+    public Integer parameter2Value;
     public String parameter3Value;
-    public String parameter4Value;
-    public String parameter5Value;
+    public Double parameter4Value;
+    public Boolean parameter5Value;
+
+
+    @Override
+    public boolean equals (Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MeasurementInformationDto that = (MeasurementInformationDto) o;
+
+        if (!aircraft.equals (that.aircraft)) return false;
+        return engine.equals (that.engine);
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = aircraft.hashCode();
+        result = 31 * result + engine.hashCode();
+        return result;
+    }
 
 
     @Override

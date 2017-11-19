@@ -10,13 +10,13 @@ public class Constants {
 	public static final class APPLICATION_PATH {
 
 		public static final String ROOT = "com.module2";
+		public static final String CONTROLLER = ROOT + "." + "controller";
 		public static final String REPOSITORY = ROOT + "." + "repository.impl";
-		public static final String SERVICE = ROOT + "." + "service";
 	}
 
 	// Kafka constants
-	public static final String KAFKA_TOPIC = "learning";
-	public static final String KAFKA_GROUPID = "group1";
+	public static final String KAFKA_TOPIC = "kafka_topic";
+	public static final String KAFKA_GROUPID = "kafka_groupoId";
 
 	// Ignite tables
 	public static final class IGNITE_TABLES {

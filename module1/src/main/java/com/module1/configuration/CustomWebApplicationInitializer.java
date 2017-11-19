@@ -5,6 +5,7 @@ import javax.servlet.ServletRegistration;
 
 import com.module1.Constants;
 import com.module1.configuration.module.AsyncWebMvcConfigurationSupport;
+import com.module1.configuration.module.CassandraConfig;
 import com.module1.configuration.module.KafkaProducerConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -31,6 +32,7 @@ public class CustomWebApplicationInitializer implements WebApplicationInitialize
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register (AsyncWebMvcConfigurationSupport.class);
 		rootContext.register (KafkaProducerConfig.class);
+		rootContext.register (CassandraConfig.class);
 
 		// Manage the lifecycle of the root application context
 		container.addListener (new ContextLoaderListener (rootContext));

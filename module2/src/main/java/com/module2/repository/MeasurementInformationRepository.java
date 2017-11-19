@@ -12,10 +12,10 @@ public interface MeasurementInformationRepository extends IgniteRepository<Measu
     /**
      * Retrieves the values of the parameters belonging to the given id
      *
-     * @param id must not be {@literal null}
+     * @param aircraft must not be {@literal null}
      * @return values of the parameters
      * @throws IllegalArgumentException if {@code id} is {@literal null}
      */
-    List<String> getParameterValues (String id);
+    List<String> getParameterValues (String aircraft);
 
 }

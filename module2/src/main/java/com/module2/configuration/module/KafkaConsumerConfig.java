@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@ComponentScan(basePackages = {Constants.APPLICATION_PATH.SERVICE})
+@ComponentScan(basePackages = {Constants.APPLICATION_PATH.CONTROLLER})
 @EnableKafka
 public class KafkaConsumerConfig {
 

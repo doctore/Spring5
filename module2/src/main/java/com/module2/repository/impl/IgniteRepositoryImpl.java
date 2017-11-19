@@ -107,9 +107,9 @@ public abstract class IgniteRepositoryImpl<T, ID extends Serializable> implement
         TreeSet<ID> keys = new TreeSet<>();
 
         for (ID id : ids)
-            keys.add(id);
+            keys.add (id);
 
-        return cache.getAll(keys).values();
+        return cache.getAll (keys).values();
     }
 
 
@@ -149,14 +149,14 @@ public abstract class IgniteRepositoryImpl<T, ID extends Serializable> implement
             cache.removeAll((Set<ID>)ids);
 
         if (ids instanceof Collection)
-            cache.removeAll(new HashSet<>((Collection<ID>)ids));
+            cache.removeAll (new HashSet<>((Collection<ID>)ids));
 
         TreeSet<ID> keys = new TreeSet<>();
 
         for (ID id : ids)
             keys.add(id);
 
-        cache.removeAll(keys);
+        cache.removeAll (keys);
     }
 
 

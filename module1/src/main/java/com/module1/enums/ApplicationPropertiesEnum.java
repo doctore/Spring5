@@ -14,6 +14,20 @@ public enum ApplicationPropertiesEnum implements ManagePropertiesFilesWithEnumsI
         public String getValue() {
             return applicationBundle.getString (this.getPropertyName());
         }
+    }
+   ,CASSANDRA_CONTACT_POINTS ("cassandra.contactPoints") {
+
+        @Override
+        public String getValue() {
+            return applicationBundle.getString (this.getPropertyName());
+        }
+    }
+   ,CASSANDRA_PORT ("cassandra.port") {
+
+        @Override
+        public Integer getValue() {
+            return Integer.valueOf (applicationBundle.getString (this.getPropertyName()));
+        }
     };
 
 

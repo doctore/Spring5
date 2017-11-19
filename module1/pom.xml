@@ -24,7 +24,8 @@
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 	
 		<springframework.version>5.0.1.RELEASE</springframework.version>
-		<springframework-kafka.version>2.0.0.RELEASE</springframework-kafka.version>
+		<springframework-kafka.version>2.0.1.RELEASE</springframework-kafka.version>
+		<springframework-cassandra.version>2.0.1.RELEASE</springframework-cassandra.version>
 	</properties>
 
 	<dependencies>
@@ -45,6 +46,11 @@
         	<artifactId>spring-kafka</artifactId>
         	<version>${springframework-kafka.version}</version>
     	</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-cassandra</artifactId>
+			<version>${springframework-cassandra.version}</version>
+		</dependency>
 
 		<!-- Work with Json -->
 		<dependency>

@@ -15,7 +15,8 @@ import com.module1.Constants;
  * Used to configure all servlet filters and servlets in the application as asynchronous servlets
  */
 @Configuration
-@ComponentScan (basePackages = {Constants.APPLICATION_PATH.CONTROLLER})
+@ComponentScan (basePackages = {Constants.APPLICATION_PATH.CONTROLLER
+                               ,Constants.APPLICATION_PATH.SERVICE})
 @EnableWebMvc
 public class AsyncWebMvcConfigurationSupport extends WebMvcConfigurationSupport {
 	

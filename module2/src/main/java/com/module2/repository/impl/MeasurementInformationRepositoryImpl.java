@@ -25,20 +25,20 @@ public class MeasurementInformationRepositoryImpl extends IgniteRepositoryImpl<M
     /**
      * Retrieves the values of the parameters belonging to the given id
      *
-     * @param id must not be {@literal null}
+     * @param aircraft must not be {@literal null}
      * @return values of the parameters
      * @throws IllegalArgumentException if {@code id} is {@literal null}
      */
-    public List<String> getParameterValues (String id) {
+    public List<String> getParameterValues (String aircraft) {
 
-        if (id == null)
-            throw new IllegalArgumentException ("Given id is null");
+        if (aircraft == null)
+            throw new IllegalArgumentException ("Given aircraft is null");
 
         // Querying data from the cluster using a distributed JOIN.
         SqlFieldsQuery query = new SqlFieldsQuery ("SELECT parameter1Value, parameter2Value "
                                                  + "      ,parameter3Value, parameter4Value, parameter5Value "
                                                  + "FROM " + Constants.IGNITE_TABLES.MEASUREMENT_INFORMATION + " "
-                                                 + "WHERE aircraft = ?").setArgs (id);
+                                                 + "WHERE aircraft = ?").setArgs (aircraft);
         List<String> result = new ArrayList<>();
         cache.query (query).getAll().forEach (r -> {
             result.add ((String)r.get(0));
