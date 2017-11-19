@@ -2,7 +2,6 @@ package com.module1.controller;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.module1.Constants;
 import com.module1.dto.MeasurementInformationDto;
 import com.module1.service.MeasurementInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +24,9 @@ public class MeasurementInformationController extends ParentController {
 	 * @return true
 	 */
 	@PostMapping
-	public CompletableFuture<Boolean> insertMeasurementInformation (@RequestBody MeasurementInformationDto measurementInformation) {
+	public CompletableFuture<Boolean> addMeasurementInformation (@RequestBody MeasurementInformationDto measurementInformation) {
 
-		return CompletableFuture.supplyAsync (() -> measurementInformationService.addNewMeasurementData (measurementInformation)
+		return CompletableFuture.supplyAsync (() -> measurementInformationService.addMeasurementInformation (measurementInformation)
 		                                     ,taskExecutor);
 	}
 

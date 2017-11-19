@@ -14,6 +14,6 @@ public interface MeasurementInformationService {
      *
      * @return true if the required operations was made without problems, false otherwise
      */
-    boolean addNewMeasurementData (MeasurementInformationDto measurementInformation);
+    boolean addMeasurementInformation (MeasurementInformationDto measurementInformation);
 
 }

@@ -25,7 +25,7 @@ public class MeasurementInformationServiceImpl implements MeasurementInformation
 
     /** {@inheritDoc} */
     @Override
-    public boolean addNewMeasurementData (MeasurementInformationDto measurementInformationDto) {
+    public boolean addMeasurementInformation (MeasurementInformationDto measurementInformationDto) {
 
         try {
             MeasurementInformation measurementInformation = new MeasurementInformation (measurementInformationDto);

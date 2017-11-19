@@ -28,18 +28,6 @@ public class MeasurementInformationController {
 
         LOGGER.info ("The following parameters have been added in in-memory database: "
                    + measurementInformationRepository.getParameterValues (measurementInformationDto.aircraft));
-
-        /*
-        Iterable<MeasurementInformation> measurements = measurementInformationRepository.findAll();
-        measurements.forEach ( mi -> LOGGER.info ("USING findAll: " + mi));
-
-        Optional<MeasurementInformation> mi = measurementInformationRepository.findById (measurementInformationDto.aircraft);
-        LOGGER.info ("USING findById: " + mi.get());
-
-        measurementInformationRepository.deleteAll();
-
-        LOGGER.info ("USING count: " + measurementInformationRepository.count());
-        */
     }
 
 }
