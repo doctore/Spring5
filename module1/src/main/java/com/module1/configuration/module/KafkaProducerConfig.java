@@ -55,7 +55,7 @@ public class KafkaProducerConfig {
 
                 ListenableFuture<SendResult<String, Object>> future = super.send (topic, message);
 
-                // Manage the possible responses of the message sent
+                // Manage possible responses of the send method
                 future.addCallback (new ListenableFutureCallback<SendResult<String, Object>>() {
 
                     @Override

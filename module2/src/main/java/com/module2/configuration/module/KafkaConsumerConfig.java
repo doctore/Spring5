@@ -4,6 +4,8 @@ import com.module2.Constants;
 import com.module2.enums.ApplicationPropertiesEnum;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,9 @@ import java.util.Map;
 @EnableKafka
 public class KafkaConsumerConfig {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger (KafkaConsumerConfig.class);
+
+
     /**
      *    {@link KafkaListenerContainerFactory} used here accepts a {@link MessageConverter}, and to automatically
      * turn a {@link String} into the desired object, you can pass it a {@link StringJsonMessageConverter}.
@@ -37,6 +42,11 @@ public class KafkaConsumerConfig {
         factory.setMessageConverter (new StringJsonMessageConverter());
         factory.setConsumerFactory (consumerFactory());
 
+        // Added custom error handler for the kafka consumers
+        factory.getContainerProperties().setErrorHandler ((exception, data) -> {
+
+            LOGGER.error ("Unable to process message= " + data.value() + " with offset= " + data.offset());
+        });
         return factory;
     }
 
