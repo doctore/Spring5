@@ -45,7 +45,7 @@ public class KafkaConsumerConfig {
         // Added custom error handler for the kafka consumers
         factory.getContainerProperties().setErrorHandler ((exception, data) -> {
 
-            LOGGER.error ("Unable to process message= " + data.value() + " with offset= " + data.offset());
+            LOGGER.error ("Unable to process message= " + data.value() + " with offset= " + data.offset(), exception);
         });
         return factory;
     }
