@@ -1,12 +1,12 @@
 # Spring5
 
-- [Why this project was created?](#why-this-project-was-created)
+- [Why was this project created?](#why-was-this-project-created)
 - [Modules included in this project](#modules-included-in-this-project)
     - [module1](#module1)
     - [module2](#module2)
 - [Flow example](#flow-example)
 
-## Why this project was created?
+## Why was this project created?
 
 This project was born as a proof of concept to learn how to work with the following technologies:
 
